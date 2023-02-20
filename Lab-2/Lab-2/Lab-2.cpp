@@ -10,6 +10,10 @@ int main()
 	int countLines;
 	int countColumns;
 	int vectorSeize;
+	int line;
+	int column;
+	int sum;
+	int mult;
 	int* vector = new int;
 	cout << "Колличество срок: "; cin >> countLines;
 	cout << endl <<"Колличество столбцов: "; cin >> countColumns;
@@ -34,4 +38,19 @@ int main()
 	matrix = Vector2Matrix(vector, countLines, countColumns);
 	OutputScreen(matrix,countLines, countColumns);
 
+	
+	
+	cout << endl << "Строка: "; cin >> line;
+	cout << endl << "Столбец: "; cin >> column;
+	SumMulLineMatrix(matrix,line,countColumns,sum,mult);
+	cout << endl << "Сумма по заданной строке " << sum << endl << "Произведение по заданной строке " << mult << endl;
+	
+	SumMulColumnMatrix(matrix,column,countLines,sum,mult);
+	cout << endl << "Сумма по заданному столбцу " << sum << endl << "Произведение по заданному столбцу " << mult << endl;
+	
+	SumMulMainDiag(matrix,countLines,countColumns,sum,mult);
+	cout << endl << "Сумма по главной диагонали " << sum << endl << "Произведение по главной диагонали " << mult << endl;
+	
+	SumMulSaidDiag(matrix, countLines, countColumns, sum, mult);
+	cout << endl << "Сумма по побочной диагонали " << sum << endl << "Произведение по побочной диагонали " << mult << endl;
 }

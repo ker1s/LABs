@@ -86,3 +86,54 @@ int** Vector2Matrix(int* vector, int countLines, int countColumns)
 	return matrix;
 }
 
+void SumMulLineMatrix(int** matrix, int line, int countColumns, int& sum, int&mult)
+{
+	sum = 0;
+	mult = 1;
+	for (int i = 0; i < countColumns; i++)
+	{
+		sum += matrix[line][i];
+		mult *= matrix[line][i];
+	}
+}
+void SumMulColumnMatrix(int** matrix, int column, int countLines, int& sum, int& mult)
+{
+	sum = 0;
+	mult = 1;
+	for (int i = 0; i < countLines; i++)
+	{
+		sum += matrix[i][column];
+		mult *= matrix[i][column];
+	}
+}
+void SumMulMainDiag(int** matrix, int countLines, int countColumns, int& sum, int& mult)
+{
+	sum = 0;
+	mult = 1;
+	for (int line = 0; line < countLines; line++)
+	{
+		for (int column = 0; column < countColumns; column++)
+		{
+			if (line == column)
+			{
+				sum += matrix[line][column];
+				mult *= matrix[line][column];
+			}
+		}
+	}
+
+}
+void SumMulSaidDiag(int** matrix, int countLines, int countColumns, int& sum, int& mult)
+{
+	sum = 0;
+	mult = 1;
+	int line{ countLines - 1 };
+	
+	for (int column = 0; column < countColumns; column++)
+	{
+		sum += matrix[line][column];
+		mult *= matrix[line][column];
+		line--;
+	}
+}
+
