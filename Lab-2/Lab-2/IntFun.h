@@ -8,5 +8,3 @@ void OutVectorScreen(int* vector, int vectorSize);
 
 int* Matrix2Vector(int** matrix, int newCountLines, int newCountCloums);
 int** Vector2Matrix(int* vector, int countLines, int countColumns);
-
-//cock
