@@ -1,6 +1,8 @@
 #include "IntFun.h"
 #include <iostream>
 #include <random>
+#include <sstream>
+#include <string>
 #include <iomanip>
 
 using namespace std;
@@ -136,4 +138,101 @@ void SumMulSaidDiag(int** matrix, int countLines, int countColumns, int& sum, in
 		line--;
 	}
 }
+
+
+string SearchLineMatrix(int line, int countColumns, int** matrix)
+{
+	int min{ matrix[0][0] };
+	int max{ matrix[0][0] };
+	int minC;
+	int maxC;
+	for (int i = 0; i < countColumns; i++)
+	{
+		if (matrix[line][i]<min)
+		{
+			minC = i;
+		}
+		
+		if (matrix[line][i] > max)
+		{
+			maxC = i;
+		}
+	}
+	stringstream ss;
+	ss << "Минимальное значение в выбранной строке имеет индексы: [" << line << "][" << minC << "].\n";
+	ss << "Максимальное значение в выбранной строке имеет индексы: [" << line << "][" << maxC << "].";
+	return ss.str();
+}
+string SearchColumnMatrix(int column, int countLines, int** matrix)
+{
+	int min{ matrix[0][0] };
+	int max{ matrix[0][0] };
+	int minL;
+	int maxL;
+	for (int i = 0; i < countLines; i++)
+	{
+		if (matrix[i][column] < min)
+		{
+			min = matrix[i][column];
+		}
+
+		if (matrix[i][column] > max)
+		{
+			max = matrix[i][column];
+		}
+	}
+	stringstream ss;
+	ss << "Минимальное значение в выбранном столбце имеет индексы: [" << minL << "][" << column << "].\n";
+	ss << "Максимальное значение в выбранном столбце имеет индексы: [" << maxL << "][" << column << "].";
+	return ss.str();
+}
+void SearchMainDiag(int** matrix, int countLines, int countColumns, int& min, int& max)
+{
+	min = matrix[0][0];
+	max = matrix[0][0];
+	for (int line = 0; line < countLines; line++)
+	{
+		for (int column = 0; column < countColumns; column++)
+		{
+			if (line == column)
+			{
+				if (matrix[line][column] < min)
+				{
+					min = matrix[line][column];
+				}
+
+				if (matrix[line][column > max])
+				{
+					max = matrix[line][column];
+				}
+			}
+		}
+	}
+}
+void SearchSaidDiag(int** matrix, int countLines, int countColumns, int& min, int& max)
+{
+	min = matrix[0][0];
+	max = matrix[0][0];
+	int line{ countLines - 1 };
+	for (int column = 0; column < countColumns; column++)
+	{
+		if (matrix[line][column] < min)
+		{
+			min = matrix[line][column];
+		}
+
+		if (matrix[line][column > max])
+		{
+			max = matrix[line][column];
+		}
+		line--;
+	}
+}
+
+string concatenateStrings(const std::string& str1, const std::string& str2)
+{
+	return str1 + str2;
+}
+
+
 
