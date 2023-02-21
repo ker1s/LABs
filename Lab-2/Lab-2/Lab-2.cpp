@@ -1,5 +1,5 @@
-﻿#include <iostream>
-#include "IntFun.h"
+﻿#include "IntFun.h"
+#include <iostream>
 
 using namespace std;
 
@@ -14,11 +14,9 @@ int main()
 	int column;
 	int sum;
 	int mult;
-	int min;
-	int max;
-	int* vector = new int;
 	cout << "Колличество срок: "; cin >> countLines;
 	cout << endl <<"Колличество столбцов: "; cin >> countColumns;
+	int* vector = new int[countLines * countColumns];
 
 	int** matrix{ new int* [countLines] };
 	for (int i = 0; i < countLines; i++)
@@ -66,20 +64,12 @@ int main()
 
 	//Поиск минимального и максимального
 
-	/* cout << endl << "Строка: "; cin >> line;
+	cout << endl << "Строка: "; cin >> line;
 	cout << endl << "Столбец: "; cin >> column;
 
-
-	SearchLineMatrix(matrix, line, countColumns, min, max);
-	cout << endl << "Минимальный в заданной строке " << min << endl << "Максимальный в заданной строке " << max << endl;
-
-	SearchColumnMatrix(matrix, column, countLines, min, max);
-	cout << endl << "Минимальный в заданном столбце " << min << endl << "Максимальный в заданном столбце " << max << endl;
-
-
-	SearchMainDiag(matrix, countLines, countColumns, min, max);
-	cout << endl << "Минимальный в главной диагонали " << min << endl << "Максимальный в главной диагонали " << max << endl;
-
-	SearchSaidDiag(matrix, countLines, countColumns, min, max);
-	cout << endl << "Минимальный в побочной диагонали " << min << endl << "Максимальный в побочной диагонали " << max << endl;*/
+	cout << SearchLineMatrix(matrix, line, countColumns) << endl;
+	cout << SearchColumnMatrix(matrix, column, countLines) << endl;
+	cout << SearchMainDiag(matrix,countLines ,countColumns) << endl;
+	cout << SearchSaidDiag(matrix, countLines, countColumns) << endl;
+	
 }

@@ -69,21 +69,18 @@ int** Vector2Matrix(int* vector, int countLines, int countColumns)
 		matrix[i] = new int[countColumns];
 	}
 
-	for (int lines = 0; lines < countLines; lines++)
-	{
-		for (int column = 0; column < countColumns; column++)
-		{
-			if (index >= size)
-			{
-				matrix[lines][column] = 0;
-			}
-			else
-			{
-				matrix[lines][column] = vector[index];
+	memset(matrix[0], 0, sizeof(int) * countLines * countColumns);
+
+	for (int line = 0; line < countLines; line++) {
+		for (int column = 0; column < countColumns; column++) {
+			if (index < size) {
+				matrix[line][column] = vector[index];
 				index++;
 			}
+			else {
+				matrix[line][column] = 0;
+			}
 		}
-
 	}
 	return matrix;
 }
@@ -140,12 +137,12 @@ void SumMulSaidDiag(int** matrix, int countLines, int countColumns, int& sum, in
 }
 
 
-string SearchLineMatrix(int line, int countColumns, int** matrix)
+string SearchLineMatrix(int** matrix, int line, int countColumns)
 {
 	int min{ matrix[0][0] };
 	int max{ matrix[0][0] };
-	int minC;
-	int maxC;
+	int minC{ 0 };
+	int maxC{ 0 };
 	for (int i = 0; i < countColumns; i++)
 	{
 		if (matrix[line][i]<min)
@@ -159,37 +156,41 @@ string SearchLineMatrix(int line, int countColumns, int** matrix)
 		}
 	}
 	stringstream ss;
-	ss << "Минимальное значение в выбранной строке имеет индексы: [" << line << "][" << minC << "].\n";
-	ss << "Максимальное значение в выбранной строке имеет индексы: [" << line << "][" << maxC << "].";
+	ss << "Минимальное значение в главной диагонали имеет индексы: [" << line << "][" << minC << "].\n";
+	ss << "Максимальное значение в главной диагонали имеет индексы: [" << line << "][" << maxC << "]." << endl;
 	return ss.str();
 }
-string SearchColumnMatrix(int column, int countLines, int** matrix)
+string SearchColumnMatrix(int** matrix, int column, int countLines)
 {
 	int min{ matrix[0][0] };
 	int max{ matrix[0][0] };
-	int minL;
-	int maxL;
+	int minL{ 0 };
+	int maxL{ 0 };
 	for (int i = 0; i < countLines; i++)
 	{
 		if (matrix[i][column] < min)
 		{
-			min = matrix[i][column];
+			minL = matrix[i][column];
 		}
 
 		if (matrix[i][column] > max)
 		{
-			max = matrix[i][column];
+			maxL = matrix[i][column];
 		}
 	}
 	stringstream ss;
 	ss << "Минимальное значение в выбранном столбце имеет индексы: [" << minL << "][" << column << "].\n";
-	ss << "Максимальное значение в выбранном столбце имеет индексы: [" << maxL << "][" << column << "].";
+	ss << "Максимальное значение в выбранном столбце имеет индексы: [" << maxL << "][" << column << "]." << endl;
 	return ss.str();
 }
-void SearchMainDiag(int** matrix, int countLines, int countColumns, int& min, int& max)
+string SearchMainDiag(int** matrix, int countLines, int countColumns)
 {
-	min = matrix[0][0];
-	max = matrix[0][0];
+	int min = matrix[0][0];
+	int max = matrix[0][0];
+	int minC{ 0 };
+	int minL{ 0 };
+	int maxL{ 0 };
+	int maxC{ 0 };
 	for (int line = 0; line < countLines; line++)
 	{
 		for (int column = 0; column < countColumns; column++)
@@ -198,41 +199,50 @@ void SearchMainDiag(int** matrix, int countLines, int countColumns, int& min, in
 			{
 				if (matrix[line][column] < min)
 				{
-					min = matrix[line][column];
+					minL = line;
+					minC = column;
 				}
 
 				if (matrix[line][column > max])
 				{
-					max = matrix[line][column];
+					maxL = line;
+					maxC = column;
 				}
 			}
 		}
 	}
+	stringstream ss;
+	ss << "Минимальное значение в выбранном столбце имеет индексы: [" << minL << "][" << minC << "].\n";
+	ss << "Максимальное значение в выбранном столбце имеет индексы: [" << maxL << "][" << maxC << "]." << endl;
+	return ss.str();
 }
-void SearchSaidDiag(int** matrix, int countLines, int countColumns, int& min, int& max)
+string SearchSaidDiag(int** matrix, int countLines, int countColumns)
 {
-	min = matrix[0][0];
-	max = matrix[0][0];
+	int min = matrix[0][0];
+	int max = matrix[0][0];
+	int minC{ 0 };
+	int minL{ 0 };
+	int maxL{ 0 };
+	int maxC{ 0 };
 	int line{ countLines - 1 };
 	for (int column = 0; column < countColumns; column++)
 	{
 		if (matrix[line][column] < min)
 		{
-			min = matrix[line][column];
+			minL = line;
+			minC = column;
 		}
 
 		if (matrix[line][column > max])
 		{
-			max = matrix[line][column];
+			maxL = line;
+			maxC = column;
 		}
 		line--;
 	}
+	stringstream ss;
+	ss << "Минимальное значение в выбранном столбце имеет индексы: [" << minL << "][" << minC << "].\n";
+	ss << "Максимальное значение в выбранном столбце имеет индексы: [" << maxL << "][" << maxC << "]." << endl;
+	return ss.str();
 }
-
-string concatenateStrings(const std::string& str1, const std::string& str2)
-{
-	return str1 + str2;
-}
-
-
 
