@@ -15,6 +15,7 @@ int main()
 	int sum;
 	int mult;
 	int iteration;
+	int factor;
 	cout << "Колличество срок: "; cin >> countLines;
 	cout << endl << "Колличество столбцов: "; cin >> countColumns;
 	int* vector = new int[countLines * countColumns];
@@ -73,6 +74,22 @@ int main()
 	cout << SearchMainDiag(matrix, countLines, countColumns) << endl;
 	cout << SearchSaidDiag(matrix, countLines, countColumns) << endl;
 
+
+	//поиск и подсчет количества
+	cout << "\n\n---------------------Поиск и подсчет количества---------------------\n\n";
+	cout << "Искомы числа больше чем - "; cin >> factor;
+	cout << "Числа большие чем " << factor << FindCountQuan(matrix, countLines, countColumns, MoreN, factor) << endl;
+
+	cout << "Искомы числа меньше чем - "; cin >> factor;
+	cout << "Числа меньше чем " << factor << FindCountQuan(matrix, countLines, countColumns, LessN, factor) << endl;
+
+	cout << "Искомы числа кратны - "; cin >> factor;
+	cout << "Числа кртные " << factor << FindCountQuan(matrix, countLines, countColumns, MoreN, factor) << endl;
+
+	cout << "Искомы числа равны- "; cin >> factor;
+	cout << "Числа равные " << factor << FindCountQuan(matrix, countLines, countColumns, MoreN, factor) << endl;
+
+
 	//Удление строки в динамическом массиве
 	cout << "\n\n---------------------Удление строки в динамическом массиве---------------------\n\n";
 	cout << "Сколько строк удалить?"; cin >> iteration;
@@ -83,6 +100,20 @@ int main()
 		OutputScreen(matrix, countLines - i, countColumns);
 		cout << endl;
 	}
+
+	////Удление столбца в динамическом массиве
 	
+	//cout << "\n\n---------------------Удление столбца в динамическом массиве---------------------\n\n";
+	//cout << "Сколько столбцов удалить? "; cin >> iteration;
+	//for (int i = 0; i < iteration; i++)
+	//{
+	//	cout << "Удаляемый столбец : "; cin >> column;
+	//	matrix = DeleteColMatrix(matrix, countLines, countColumns, column);
+	//	OutputScreen(matrix, countLines - i, countColumns);
+	//	cout << endl;
+	//}
+	
+
+
 	return 0;
 }

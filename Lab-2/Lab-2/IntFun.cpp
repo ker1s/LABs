@@ -278,6 +278,45 @@ string SearchSaidDiag(int** matrix, int countLines, int countColumns)
 	return ss.str();
 }
 
+
+bool MoreN(int value, int factor)
+{
+	return value >= factor;
+}
+bool LessN(int value, int factor)
+{
+	return value < factor;
+}
+bool MultN(int value, int factor)
+{
+	return (value % factor) == 0;
+}
+bool EquallyN(int value, int factor) {
+	return value == factor;
+}
+string	FindCountQuan(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N)
+{
+	int quan{ 0 };
+	stringstream message;
+	message << " имеют(ет) индексы(с): \n";
+	for (int line = 0; line < countLines; line++)
+	{
+		for (int column = 0; column < countColumns; column++)
+		{
+			if ((*pred)(matrix[line][column], N))
+			{
+				quan++;
+				message << "[" << line << "] [" << column << "]\n";
+			}
+		}
+	}
+	message << "Их колличество составляет: " << quan;
+	return message.str();
+}
+
+
+
+
 int** DeleteStrMatrix(int** matrix, int& countLines, int countColumns, int deathLine)
 {
 	int newLine{ 0 };
@@ -304,29 +343,32 @@ int** DeleteStrMatrix(int** matrix, int& countLines, int countColumns, int death
 	countLines--;
 	return newArr;
 }
-int** DeleteColMatrix(int** matrix, int& countLines, int countColumns, int deathColumn)
+int** DeleteColMatrix(int** matrix, int countLines, int& countColumns, int deathColumn)
 {
 	int newColumn{ 0 };
 	int** newArr{ new int* [countLines] };
 	for (int i = 0; i < countLines; i++)
 	{
-		newArr[i] = new int[countColumns-1];
+		newArr[i] = new int[countColumns - 1];
 	}
-
 	for (int i = 0; i < countLines; i++)
 	{
-		for (int j = 0; j < countColumns; j++)
+	for (int j = 0; j < countColumns; j++)
 		{
-			if (j == deathColumn)
+			if (j != deathColumn)
 			{
-				continue;
+				newArr[i][newColumn] = matrix[i][j];
+				newColumn++;
 			}
-		
-
-			newArr[i][newColumn] = matrix[i][j];
 		}
-		newColumn++;
 	}
-	countLines--;
+
+
+	for (int i = 0; i < countLines; i++) {
+		delete[] matrix[i];
+	}
+	delete[] matrix;
+
+	countColumns--;
 	return newArr;
 }

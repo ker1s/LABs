@@ -26,4 +26,11 @@ string SearchColumnMatrix(int** matrix, int column, int countLines);
 string SearchMainDiag(int** matrix, int countLines, int countColumns);
 string SearchSaidDiag(int** matrix, int countLines, int countColumns);
 
+bool MoreN(int value, int factor);
+bool LessN(int value, int factor);
+bool MultN(int value, int factor);
+bool EquallyN(int value, int factor);
+string	FindCountQuan(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N);
+
 int** DeleteStrMatrix(int** matrix, int& countLines, int countColumns, int deathLine);
+int** DeleteColMatrix(int** matrix, int countLines, int& countColumns, int deathColumn);
