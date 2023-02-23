@@ -14,7 +14,7 @@ void OutputScreen(int** matrix, int countLines, int countColumns);
 void OutVectorScreen(int* vector, int vectorSize);
 
 int* Matrix2Vector(int** matrix, int newCountLines, int newCountCloums);
-int** Vector2Matrix(int* vector, int countLines, int countColumns);
+int** Vector2Matrix(int* vector, int countLines, int countColumns, int vectorSize);
 
 void SumMulLineMatrix(int** matrix, int line, int countColumns, int& sum, int& mult);
 void SumMulColumnMatrix(int** matrix, int column, int countLines, int& sum, int& mult);
@@ -25,3 +25,5 @@ string SearchLineMatrix(int** matrix, int line, int countColumns);
 string SearchColumnMatrix(int** matrix, int column, int countLines);
 string SearchMainDiag(int** matrix, int countLines, int countColumns);
 string SearchSaidDiag(int** matrix, int countLines, int countColumns);
+
+int** DeleteStrMatrix(int** matrix, int& countLines, int countColumns, int deathLine);

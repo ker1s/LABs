@@ -4,6 +4,7 @@
 #include <sstream>
 #include <string>
 #include <iomanip>
+#include <cstring>
 
 using namespace std;
 
@@ -59,31 +60,30 @@ int *Matrix2Vector(int** matrix, int newCountLines, int newCountCloums)
 	
 	return oneDimArr;
 }
-int** Vector2Matrix(int* vector, int countLines, int countColumns)
+int** Vector2Matrix(int* vector, int countLines, int countColumns, int vectorSize)
 {
-	int size{ countLines*countColumns};
-	int index{ 0 };
+	int size( countLines*countColumns);
+	int index( 0 );
+	int line{ 0 };
+	int column{ 0 };
 	int** matrix{ new int* [countLines] };
 	for (int i = 0; i < countLines; i++)
 	{
 		matrix[i] = new int[countColumns];
+		memset(matrix[i], 0, sizeof(int) * countColumns);
 	}
-
-	memset(matrix[0], 0, sizeof(int) * countLines * countColumns);
-
 	for (int line = 0; line < countLines; line++) {
 		for (int column = 0; column < countColumns; column++) {
-			if (index < size) {
-				matrix[line][column] = vector[index];
-				index++;
+			if (index >= vectorSize) {
+				break;
 			}
-			else {
-				matrix[line][column] = 0;
-			}
+			matrix[line][column] = vector[index];
+			index++;
 		}
 	}
 	return matrix;
 }
+
 
 void SumMulLineMatrix(int** matrix, int line, int countColumns, int& sum, int&mult)
 {
@@ -91,6 +91,10 @@ void SumMulLineMatrix(int** matrix, int line, int countColumns, int& sum, int&mu
 	mult = 1;
 	for (int i = 0; i < countColumns; i++)
 	{
+		if (matrix[line][i] == 0)
+		{
+			continue;
+		}
 		sum += matrix[line][i];
 		mult *= matrix[line][i];
 	}
@@ -101,6 +105,10 @@ void SumMulColumnMatrix(int** matrix, int column, int countLines, int& sum, int&
 	mult = 1;
 	for (int i = 0; i < countLines; i++)
 	{
+		if (matrix[i][column] == 0)
+		{
+			continue;
+		}
 		sum += matrix[i][column];
 		mult *= matrix[i][column];
 	}
@@ -115,6 +123,10 @@ void SumMulMainDiag(int** matrix, int countLines, int countColumns, int& sum, in
 		{
 			if (line == column)
 			{
+				if (matrix[line][column] == 0)
+				{
+					continue;
+				}
 				sum += matrix[line][column];
 				mult *= matrix[line][column];
 			}
@@ -130,6 +142,10 @@ void SumMulSaidDiag(int** matrix, int countLines, int countColumns, int& sum, in
 	
 	for (int column = 0; column < countColumns; column++)
 	{
+		if (matrix[line][column] == 0)
+		{
+			continue;
+		}
 		sum += matrix[line][column];
 		mult *= matrix[line][column];
 		line--;
@@ -145,6 +161,10 @@ string SearchLineMatrix(int** matrix, int line, int countColumns)
 	int maxC{ 0 };
 	for (int i = 0; i < countColumns; i++)
 	{
+		if (matrix[line][i] == 0)
+		{
+			continue;
+		}
 		if (matrix[line][i]<min)
 		{
 			minC = i;
@@ -168,14 +188,18 @@ string SearchColumnMatrix(int** matrix, int column, int countLines)
 	int maxL{ 0 };
 	for (int i = 0; i < countLines; i++)
 	{
+		if (matrix[i][column] == 0)
+		{
+			continue;
+		}
 		if (matrix[i][column] < min)
 		{
-			minL = matrix[i][column];
+			minL = i;
 		}
 
 		if (matrix[i][column] > max)
 		{
-			maxL = matrix[i][column];
+			maxL = i;
 		}
 	}
 	stringstream ss;
@@ -197,6 +221,10 @@ string SearchMainDiag(int** matrix, int countLines, int countColumns)
 		{
 			if (line == column)
 			{
+				if (matrix[line][column] == 0)
+				{
+					continue;
+				}
 				if (matrix[line][column] < min)
 				{
 					minL = line;
@@ -227,6 +255,10 @@ string SearchSaidDiag(int** matrix, int countLines, int countColumns)
 	int line{ countLines - 1 };
 	for (int column = 0; column < countColumns; column++)
 	{
+		if (matrix[line][column] == 0)
+		{
+			continue;
+		}
 		if (matrix[line][column] < min)
 		{
 			minL = line;
@@ -246,3 +278,55 @@ string SearchSaidDiag(int** matrix, int countLines, int countColumns)
 	return ss.str();
 }
 
+int** DeleteStrMatrix(int** matrix, int& countLines, int countColumns, int deathLine)
+{
+	int newLine{ 0 };
+	int** newArr{ new int* [countLines-1] };
+	for (int i = 0; i < countLines-1; i++)
+	{
+		newArr[i] = new int[countColumns];
+	}
+
+	for (int i = 0; i < countLines; i++)
+	{
+		if (i == deathLine)
+		{
+			continue;
+		}
+
+		for (int j = 0; j < countColumns; j++)
+		{
+
+			newArr[newLine][j] = matrix[i][j];
+		}
+		newLine++;
+	}
+	countLines--;
+	return newArr;
+}
+int** DeleteColMatrix(int** matrix, int& countLines, int countColumns, int deathColumn)
+{
+	int newColumn{ 0 };
+	int** newArr{ new int* [countLines] };
+	for (int i = 0; i < countLines; i++)
+	{
+		newArr[i] = new int[countColumns-1];
+	}
+
+	for (int i = 0; i < countLines; i++)
+	{
+		for (int j = 0; j < countColumns; j++)
+		{
+			if (j == deathColumn)
+			{
+				continue;
+			}
+		
+
+			newArr[i][newColumn] = matrix[i][j];
+		}
+		newColumn++;
+	}
+	countLines--;
+	return newArr;
+}
