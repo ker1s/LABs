@@ -32,5 +32,16 @@ bool MultN(int value, int factor);
 bool EquallyN(int value, int factor);
 string	FindCountQuan(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N);
 
+string FindCountQuanLine(int** matrix, int countLines, int countColumns, int line, bool (*pred)(int, int), int N);
+string FindCountQuanColumn(int** matrix, int countLines, int countColumns, int column, bool (*pred)(int, int), int N);
+string FindCountQuanMainDiag(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N);
+string FindCountQuanSaidDiag(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N);
+string FindCountQuanUp3(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N);
+string FindCountQuanUnder3(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N);
+
+
 int** DeleteStrMatrix(int** matrix, int& countLines, int countColumns, int deathLine);
 int** DeleteColMatrix(int** matrix, int countLines, int& countColumns, int deathColumn);
+
+void PasteSortVector(int* vector, int vectorLenght);
+void PasteSortMatrix(int** matrix, int countLines, int countColumns, int& sortLine, int& sortColumn);

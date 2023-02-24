@@ -175,10 +175,10 @@ string SearchLineMatrix(int** matrix, int line, int countColumns)
 			maxC = i;
 		}
 	}
-	stringstream ss;
-	ss << "Минимальное значение в главной диагонали имеет индексы: [" << line << "][" << minC << "].\n";
-	ss << "Максимальное значение в главной диагонали имеет индексы: [" << line << "][" << maxC << "]." << endl;
-	return ss.str();
+	stringstream message;
+	message << "Минимальное значение в главной диагонали имеет индексы: [" << line << "][" << minC << "].\n";
+	message << "Максимальное значение в главной диагонали имеет индексы: [" << line << "][" << maxC << "]." << endl;
+	return message.str();
 }
 string SearchColumnMatrix(int** matrix, int column, int countLines)
 {
@@ -202,10 +202,10 @@ string SearchColumnMatrix(int** matrix, int column, int countLines)
 			maxL = i;
 		}
 	}
-	stringstream ss;
-	ss << "Минимальное значение в выбранном столбце имеет индексы: [" << minL << "][" << column << "].\n";
-	ss << "Максимальное значение в выбранном столбце имеет индексы: [" << maxL << "][" << column << "]." << endl;
-	return ss.str();
+	stringstream message;
+	message << "Минимальное значение в выбранном столбце имеет индексы: [" << minL << "][" << column << "].\n";
+	message << "Максимальное значение в выбранном столбце имеет индексы: [" << maxL << "][" << column << "]." << endl;
+	return message.str();
 }
 string SearchMainDiag(int** matrix, int countLines, int countColumns)
 {
@@ -239,10 +239,10 @@ string SearchMainDiag(int** matrix, int countLines, int countColumns)
 			}
 		}
 	}
-	stringstream ss;
-	ss << "Минимальное значение в выбранном столбце имеет индексы: [" << minL << "][" << minC << "].\n";
-	ss << "Максимальное значение в выбранном столбце имеет индексы: [" << maxL << "][" << maxC << "]." << endl;
-	return ss.str();
+	stringstream message;
+	message << "Минимальное значение в выбранном столбце имеет индексы: [" << minL << "][" << minC << "].\n";
+	message << "Максимальное значение в выбранном столбце имеет индексы: [" << maxL << "][" << maxC << "]." << endl;
+	return message.str();
 }
 string SearchSaidDiag(int** matrix, int countLines, int countColumns)
 {
@@ -272,10 +272,10 @@ string SearchSaidDiag(int** matrix, int countLines, int countColumns)
 		}
 		line--;
 	}
-	stringstream ss;
-	ss << "Минимальное значение в выбранном столбце имеет индексы: [" << minL << "][" << minC << "].\n";
-	ss << "Максимальное значение в выбранном столбце имеет индексы: [" << maxL << "][" << maxC << "]." << endl;
-	return ss.str();
+	stringstream message;
+	message << "Минимальное значение в выбранном столбце имеет индексы: [" << minL << "][" << minC << "].\n";
+	message << "Максимальное значение в выбранном столбце имеет индексы: [" << maxL << "][" << maxC << "]." << endl;
+	return message.str();
 }
 
 
@@ -314,8 +314,117 @@ string	FindCountQuan(int** matrix, int countLines, int countColumns, bool (*pred
 	return message.str();
 }
 
+string FindCountQuanLine(int** matrix, int countLines, int countColumns, int line ,bool (*pred)(int, int), int N)
+{
+	int quan{ 0 };
+	stringstream message;
+	
+	for (int column = 0; column < countColumns; column++)
+	{
+		if ((*pred)(matrix[line][column], N))
+		{
+			quan++;
+			message << "[" << line << "] [" << column << "]\n";
+		}
+	}
+	message << "Их колличество составляет: " << quan;
+	return message.str();
+}
+string FindCountQuanColumn(int** matrix, int countLines, int countColumns, int column, bool (*pred)(int, int), int N)
+{
+	int quan{ 0 };
+	stringstream message;
 
+	for (int line = 0; line < countColumns; line++)
+	{
+		if ((*pred)(matrix[line][column], N))
+		{
+			quan++;
+			message << "[" << line << "] [" << column << "]\n";
+		}
+	}
+	message << "Их колличество составляет: " << quan;
+	return message.str();
+}
+string FindCountQuanMainDiag(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N)
+{
+	int quan{ 0 };
+	stringstream message;
 
+	for (int line = 0; line < countColumns; line++)
+	{
+		for (int column = 0; column < countColumns; column++)
+		{
+			if (line == column)
+			{
+				if ((*pred)(matrix[line][column], N))
+				{
+					quan++;
+					message << "[" << line << "] [" << column << "]\n";
+				}
+			}
+		}
+	}
+	message << "Их колличество составляет: " << quan;
+	return message.str();
+}
+string FindCountQuanSaidDiag(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N)
+{
+	int quan{ 0 };
+	int line{ countLines - 1 };
+	stringstream message;
+	for (int column = 0; column < countColumns; column++)
+	{
+		if ((*pred)(matrix[line][column], N))
+		{
+			quan++;
+			message << "[" << line << "] [" << column << "]\n";
+		}
+		line--;
+	}
+	message << "Их колличество составляет: " << quan;
+	return message.str();
+}
+string FindCountQuanUp3(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N)
+{
+	int quan{ 0 };
+	int saidCoeff{ 0 };
+	stringstream message;
+	for (int line = 0; line < countColumns; line++)
+	{
+		for (int column = saidCoeff; column < countColumns; column++)
+		{
+			if ((*pred)(matrix[line][column], N))
+			{
+				quan++;
+				message << "[" << line << "] [" << column << "]\n";
+			}
+		}
+		saidCoeff++;
+	}
+	message << "Их колличество составляет: " << quan;
+	return message.str();
+}
+string FindCountQuanUnder3(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N)
+{
+	int quan{ 0 };
+	int saidCoeff{ 0 };
+	stringstream message;
+	for (int line = 0; line < countColumns; line++)
+	{
+		for (int column = 0; column < saidCoeff; column++)
+		{
+			if ((*pred)(matrix[line][column], N))
+			{
+				quan++;
+				message << "[" << line << "] [" << column << "]\n";
+			}
+		}
+		saidCoeff++;
+	}
+	message << "Их колличество составляет: " << quan;
+	return message.str();
+}
 
 int** DeleteStrMatrix(int** matrix, int& countLines, int countColumns, int deathLine)
 {
@@ -371,4 +480,69 @@ int** DeleteColMatrix(int** matrix, int countLines, int& countColumns, int death
 
 	countColumns--;
 	return newArr;
+}
+
+void PasteSortVector(int* vector, int vectorLenght)
+{
+	for (int i = 1; i < vectorLenght; i++) 
+	{
+		int j{ i - 1 };
+		while (j >= 0 && vector[j] > vector[j + 1]) 
+		{
+			swap(vector[j], vector[j + 1]);
+			j--;
+		}
+	}
+}
+                    
+void PasteSortMatrix(int** matrix, int countLines, int countColumns, int& sortLine, int& sortColumn)
+{
+	if (sortLine > -1)
+	{
+		int* vector = new int[countColumns];
+	
+		for (int columnI = 0; columnI < countColumns; columnI++)
+		{
+			vector[columnI] = matrix[sortLine][columnI];
+		}
+		PasteSortVector(vector, countColumns);
+		for (int column = 0; column < countColumns; column++)
+		{
+			matrix[sortLine][column] = vector[column];
+		}
+		delete[] vector;
+	}
+	if (sortColumn > -1)
+	{
+		int* vector = new int[countLines];
+
+		for (int lineI = 0; lineI < countLines; lineI++)
+		{
+			vector[lineI] = matrix[lineI][sortColumn];
+		}
+		PasteSortVector(vector, countColumns);
+		for (int line = 0; line < countLines; line++)
+		{
+			matrix[line][sortColumn] = vector[line];
+		}
+		delete[] vector;
+	}
+	if (sortLine == INT_MIN && sortColumn == INT_MIN)
+	{
+		int* vector = new int[countLines * countColumns];
+		int vectorIndex{ 0 };
+		vector = Matrix2Vector(matrix, countLines, countColumns);
+		PasteSortVector(vector, countLines * countColumns);
+		for (int line = 0; line < countLines; line++)
+		{
+			for (int column = 0; column < countColumns; column++)
+			{
+				matrix[line][column] = vector[vectorIndex];
+				vectorIndex++;
+			}
+		}
+		delete[] vector;
+	}	
+	sortLine = INT_MIN;
+	sortColumn = INT_MIN;
 }
