@@ -45,3 +45,10 @@ int** DeleteColMatrix(int** matrix, int countLines, int& countColumns, int death
 
 void PasteSortVector(int* vector, int vectorLenght);
 void PasteSortMatrix(int** matrix, int countLines, int countColumns, int& sortLine, int& sortColumn);
+
+
+
+
+
+
+void Transportation(int** matrix, int countLines, int countColumns);

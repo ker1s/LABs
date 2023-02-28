@@ -176,8 +176,8 @@ string SearchLineMatrix(int** matrix, int line, int countColumns)
 		}
 	}
 	stringstream message;
-	message << "Минимальное значение в главной диагонали имеет индексы: [" << line << "][" << minC << "].\n";
-	message << "Максимальное значение в главной диагонали имеет индексы: [" << line << "][" << maxC << "]." << endl;
+	message << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: [" << line << "][" << minC << "].\n";
+	message << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: [" << line << "][" << maxC << "]." << endl;
 	return message.str();
 }
 string SearchColumnMatrix(int** matrix, int column, int countLines)
@@ -203,8 +203,8 @@ string SearchColumnMatrix(int** matrix, int column, int countLines)
 		}
 	}
 	stringstream message;
-	message << "Минимальное значение в выбранном столбце имеет индексы: [" << minL << "][" << column << "].\n";
-	message << "Максимальное значение в выбранном столбце имеет индексы: [" << maxL << "][" << column << "]." << endl;
+	message << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: [" << minL << "][" << column << "].\n";
+	message << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: [" << maxL << "][" << column << "]." << endl;
 	return message.str();
 }
 string SearchMainDiag(int** matrix, int countLines, int countColumns)
@@ -240,8 +240,8 @@ string SearchMainDiag(int** matrix, int countLines, int countColumns)
 		}
 	}
 	stringstream message;
-	message << "Минимальное значение в выбранном столбце имеет индексы: [" << minL << "][" << minC << "].\n";
-	message << "Максимальное значение в выбранном столбце имеет индексы: [" << maxL << "][" << maxC << "]." << endl;
+	message << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: [" << minL << "][" << minC << "].\n";
+	message << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: [" << maxL << "][" << maxC << "]." << endl;
 	return message.str();
 }
 string SearchSaidDiag(int** matrix, int countLines, int countColumns)
@@ -273,8 +273,8 @@ string SearchSaidDiag(int** matrix, int countLines, int countColumns)
 		line--;
 	}
 	stringstream message;
-	message << "Минимальное значение в выбранном столбце имеет индексы: [" << minL << "][" << minC << "].\n";
-	message << "Максимальное значение в выбранном столбце имеет индексы: [" << maxL << "][" << maxC << "]." << endl;
+	message << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: [" << minL << "][" << minC << "].\n";
+	message << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: [" << maxL << "][" << maxC << "]." << endl;
 	return message.str();
 }
 
@@ -298,7 +298,7 @@ string	FindCountQuan(int** matrix, int countLines, int countColumns, bool (*pred
 {
 	int quan{ 0 };
 	stringstream message;
-	message << " имеют(ет) индексы(с): \n";
+	message << " пїЅпїЅпїЅпїЅпїЅ(пїЅпїЅ) пїЅпїЅпїЅпїЅпїЅпїЅпїЅ(пїЅ): \n";
 	for (int line = 0; line < countLines; line++)
 	{
 		for (int column = 0; column < countColumns; column++)
@@ -310,7 +310,7 @@ string	FindCountQuan(int** matrix, int countLines, int countColumns, bool (*pred
 			}
 		}
 	}
-	message << "Их колличество составляет: " << quan;
+	message << "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " << quan;
 	return message.str();
 }
 
@@ -327,7 +327,7 @@ string FindCountQuanLine(int** matrix, int countLines, int countColumns, int lin
 			message << "[" << line << "] [" << column << "]\n";
 		}
 	}
-	message << "Их колличество составляет: " << quan;
+	message << "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " << quan;
 	return message.str();
 }
 string FindCountQuanColumn(int** matrix, int countLines, int countColumns, int column, bool (*pred)(int, int), int N)
@@ -343,7 +343,7 @@ string FindCountQuanColumn(int** matrix, int countLines, int countColumns, int c
 			message << "[" << line << "] [" << column << "]\n";
 		}
 	}
-	message << "Их колличество составляет: " << quan;
+	message << "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " << quan;
 	return message.str();
 }
 string FindCountQuanMainDiag(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N)
@@ -365,7 +365,7 @@ string FindCountQuanMainDiag(int** matrix, int countLines, int countColumns, boo
 			}
 		}
 	}
-	message << "Их колличество составляет: " << quan;
+	message << "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " << quan;
 	return message.str();
 }
 string FindCountQuanSaidDiag(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N)
@@ -382,7 +382,7 @@ string FindCountQuanSaidDiag(int** matrix, int countLines, int countColumns, boo
 		}
 		line--;
 	}
-	message << "Их колличество составляет: " << quan;
+	message << "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " << quan;
 	return message.str();
 }
 string FindCountQuanUp3(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N)
@@ -402,7 +402,7 @@ string FindCountQuanUp3(int** matrix, int countLines, int countColumns, bool (*p
 		}
 		saidCoeff++;
 	}
-	message << "Их колличество составляет: " << quan;
+	message << "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " << quan;
 	return message.str();
 }
 string FindCountQuanUnder3(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N)
@@ -422,7 +422,7 @@ string FindCountQuanUnder3(int** matrix, int countLines, int countColumns, bool 
 		}
 		saidCoeff++;
 	}
-	message << "Их колличество составляет: " << quan;
+	message << "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " << quan;
 	return message.str();
 }
 
@@ -545,4 +545,80 @@ void PasteSortMatrix(int** matrix, int countLines, int countColumns, int& sortLi
 	}	
 	sortLine = INT_MIN;
 	sortColumn = INT_MIN;
+}
+
+
+
+
+int** multMtrix2Vector(int** matrix, int* vector, int countLines, int countColumns, int vectorLength)
+{
+	int** multVector{ new int* [countLines] };
+	for (int i = 0; i < 1; i++)
+	{
+		multVector[i] = new int[1];
+	}
+	int** convertedVector{ new int* [countLines] };
+	for (int i = 0; i < 1; i++)
+	{
+		convertedVector[i] = new int[1];
+	}
+	
+	for (int i = 0; i < vectorLength; i++)
+	{
+		multVector = 0;
+	}
+
+	convertedVector = Vector2Matrix(vector, countLines, 1, vectorLength);
+	for (int line = 0; line < countLines; line++)
+	{
+		for (int column = 0; column < countColumns; column++)
+		{
+			multVector[line][0] += matrix[line][column] * convertedVector[line][0];
+		}
+	}
+	return multVector;
+}
+
+int** multMatrix2Matrix(int** matrix1, int** matrix2, int countLines, int countColumns)
+{
+
+}
+
+
+
+
+
+
+
+
+
+void Transportation(int** matrix, int countLines, int countColumns)
+{
+	int** tempMatrix{ new int* [countLines] };
+	for (int i = 0; i < countLines; i++)
+	{
+		tempMatrix[i] = new int[countColumns];
+	}
+	
+	for (int line = 0; line < countLines; line++)
+	{
+		for (int column = 0; column < countColumns; column++)
+		{
+			tempMatrix[column][line] = matrix[line][column];
+		}
+	}
+
+	for (int line = 0; line < countLines; line++)
+	{
+		for (int column = 0; column < countColumns; column++)
+		{
+			int value = tempMatrix[line][column];
+			matrix[line][column] = value;
+		}
+	}
+	for (int i = 0; i < countLines; i++) {
+		delete[] tempMatrix[i];
+	}
+	delete[] tempMatrix;
+
 }
