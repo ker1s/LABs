@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 #include <iomanip>
+#include <windows.h>
 
 using namespace std;
 
@@ -48,6 +49,7 @@ void PasteSortMatrix(int** matrix, int countLines, int countColumns, int& sortLi
 
 
 
+void matrixTransformation(int** matrix, int countColumns, int transformationLine, int faactor, bool condition = 0);
 
 
 

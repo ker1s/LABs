@@ -5,6 +5,7 @@
 #include <string>
 #include <iomanip>
 #include <cstring>
+#include <windows.h>
 
 using namespace std;
 
@@ -176,8 +177,8 @@ string SearchLineMatrix(int** matrix, int line, int countColumns)
 		}
 	}
 	stringstream message;
-	message << "����������� �������� � ������� ��������� ����� �������: [" << line << "][" << minC << "].\n";
-	message << "������������ �������� � ������� ��������� ����� �������: [" << line << "][" << maxC << "]." << endl;
+	message << "Индекс минимального : [" << line << "][" << minC << "].\n";
+	message << "Индекс максимального: [" << line << "][" << maxC << "]." << endl;
 	return message.str();
 }
 string SearchColumnMatrix(int** matrix, int column, int countLines)
@@ -203,8 +204,8 @@ string SearchColumnMatrix(int** matrix, int column, int countLines)
 		}
 	}
 	stringstream message;
-	message << "����������� �������� � ��������� ������� ����� �������: [" << minL << "][" << column << "].\n";
-	message << "������������ �������� � ��������� ������� ����� �������: [" << maxL << "][" << column << "]." << endl;
+	message << "Индекс минимального :[" << minL << "][" << column << "].\n";
+	message << "Индекс максимального : [" << maxL << "][" << column << "]." << endl;
 	return message.str();
 }
 string SearchMainDiag(int** matrix, int countLines, int countColumns)
@@ -240,8 +241,8 @@ string SearchMainDiag(int** matrix, int countLines, int countColumns)
 		}
 	}
 	stringstream message;
-	message << "����������� �������� � ��������� ������� ����� �������: [" << minL << "][" << minC << "].\n";
-	message << "������������ �������� � ��������� ������� ����� �������: [" << maxL << "][" << maxC << "]." << endl;
+	message << "Индекс минимального :[" << minL << "][" << minC << "].\n";
+	message << "Индекс максимального : [" << maxL << "][" << maxC << "]." << endl;
 	return message.str();
 }
 string SearchSaidDiag(int** matrix, int countLines, int countColumns)
@@ -273,8 +274,8 @@ string SearchSaidDiag(int** matrix, int countLines, int countColumns)
 		line--;
 	}
 	stringstream message;
-	message << "����������� �������� � ��������� ������� ����� �������: [" << minL << "][" << minC << "].\n";
-	message << "������������ �������� � ��������� ������� ����� �������: [" << maxL << "][" << maxC << "]." << endl;
+	message << "Индекс минимального :[" << minL << "][" << minC << "].\n";
+	message << "Индекс максимального : [" << maxL << "][" << maxC << "]." << endl;
 	return message.str();
 }
 
@@ -298,7 +299,7 @@ string	FindCountQuan(int** matrix, int countLines, int countColumns, bool (*pred
 {
 	int quan{ 0 };
 	stringstream message;
-	message << " �����(��) �������(�): \n";
+	message << " Имеют индексы: \n";
 	for (int line = 0; line < countLines; line++)
 	{
 		for (int column = 0; column < countColumns; column++)
@@ -310,7 +311,7 @@ string	FindCountQuan(int** matrix, int countLines, int countColumns, bool (*pred
 			}
 		}
 	}
-	message << "�� ����������� ����������: " << quan;
+	message << "их общее колличество равно: " << quan;
 	return message.str();
 }
 
@@ -318,7 +319,8 @@ string FindCountQuanLine(int** matrix, int countLines, int countColumns, int lin
 {
 	int quan{ 0 };
 	stringstream message;
-	
+	message << " Имеют индексы: \n";
+
 	for (int column = 0; column < countColumns; column++)
 	{
 		if ((*pred)(matrix[line][column], N))
@@ -327,13 +329,14 @@ string FindCountQuanLine(int** matrix, int countLines, int countColumns, int lin
 			message << "[" << line << "] [" << column << "]\n";
 		}
 	}
-	message << "�� ����������� ����������: " << quan;
+	message << "их общее колличество равно: " << quan;
 	return message.str();
 }
 string FindCountQuanColumn(int** matrix, int countLines, int countColumns, int column, bool (*pred)(int, int), int N)
 {
 	int quan{ 0 };
 	stringstream message;
+	message << " Имеют индексы: \n";
 
 	for (int line = 0; line < countColumns; line++)
 	{
@@ -343,13 +346,14 @@ string FindCountQuanColumn(int** matrix, int countLines, int countColumns, int c
 			message << "[" << line << "] [" << column << "]\n";
 		}
 	}
-	message << "�� ����������� ����������: " << quan;
+	message << "их общее колличество равно: " << quan;
 	return message.str();
 }
 string FindCountQuanMainDiag(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N)
 {
 	int quan{ 0 };
 	stringstream message;
+	message << " Имеют индексы: \n";
 
 	for (int line = 0; line < countColumns; line++)
 	{
@@ -365,7 +369,7 @@ string FindCountQuanMainDiag(int** matrix, int countLines, int countColumns, boo
 			}
 		}
 	}
-	message << "�� ����������� ����������: " << quan;
+	message << "их общее колличество равно: " << quan;
 	return message.str();
 }
 string FindCountQuanSaidDiag(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N)
@@ -373,6 +377,8 @@ string FindCountQuanSaidDiag(int** matrix, int countLines, int countColumns, boo
 	int quan{ 0 };
 	int line{ countLines - 1 };
 	stringstream message;
+	message << " Имеют индексы: \n";
+
 	for (int column = 0; column < countColumns; column++)
 	{
 		if ((*pred)(matrix[line][column], N))
@@ -382,7 +388,7 @@ string FindCountQuanSaidDiag(int** matrix, int countLines, int countColumns, boo
 		}
 		line--;
 	}
-	message << "�� ����������� ����������: " << quan;
+	message << "их общее колличество равно: " << quan;
 	return message.str();
 }
 string FindCountQuanUp3(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N)
@@ -390,6 +396,8 @@ string FindCountQuanUp3(int** matrix, int countLines, int countColumns, bool (*p
 	int quan{ 0 };
 	int saidCoeff{ 0 };
 	stringstream message;
+	message << " Имеют индексы: \n";
+
 	for (int line = 0; line < countColumns; line++)
 	{
 		for (int column = saidCoeff; column < countColumns; column++)
@@ -402,7 +410,7 @@ string FindCountQuanUp3(int** matrix, int countLines, int countColumns, bool (*p
 		}
 		saidCoeff++;
 	}
-	message << "�� ����������� ����������: " << quan;
+	message << "их общее колличество равно: " << quan;
 	return message.str();
 }
 string FindCountQuanUnder3(int** matrix, int countLines, int countColumns, bool (*pred)(int, int), int N)
@@ -410,6 +418,8 @@ string FindCountQuanUnder3(int** matrix, int countLines, int countColumns, bool 
 	int quan{ 0 };
 	int saidCoeff{ 0 };
 	stringstream message;
+	message << " Имеют индексы: \n";
+
 	for (int line = 0; line < countColumns; line++)
 	{
 		for (int column = 0; column < saidCoeff; column++)
@@ -422,7 +432,7 @@ string FindCountQuanUnder3(int** matrix, int countLines, int countColumns, bool 
 		}
 		saidCoeff++;
 	}
-	message << "�� ����������� ����������: " << quan;
+	message << "их общее колличество равно: " << quan;
 	return message.str();
 }
 
@@ -553,19 +563,20 @@ void PasteSortMatrix(int** matrix, int countLines, int countColumns, int& sortLi
 int** multMtrix2Vector(int** matrix, int* vector, int countLines, int countColumns, int vectorLength)
 {
 	int** multVector{ new int* [countLines] };
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < countLines; i++)
 	{
 		multVector[i] = new int[1];
 	}
 	int** convertedVector{ new int* [countLines] };
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < countLines; i++)
 	{
 		convertedVector[i] = new int[1];
+		convertedVector[i][0] = vector[i];
 	}
 	
 	for (int i = 0; i < vectorLength; i++)
 	{
-		multVector = 0;
+		multVector[i] = 0;
 	}
 
 	convertedVector = Vector2Matrix(vector, countLines, 1, vectorLength);
@@ -573,20 +584,37 @@ int** multMtrix2Vector(int** matrix, int* vector, int countLines, int countColum
 	{
 		for (int column = 0; column < countColumns; column++)
 		{
+			int** multVector{ new int* [countLines] };
 			multVector[line][0] += matrix[line][column] * convertedVector[line][0];
 		}
 	}
 	return multVector;
 }
 
-int** multMatrix2Matrix(int** matrix1, int** matrix2, int countLines, int countColumns)
+//int** multMatrix2Matrix(int** matrix1, int** matrix2, int countLines, int countColumns)
+//{
+//
+//}
+
+
+
+void matrixTransformation(int** matrix, int countColumns, int transformationLine, int faactor, bool condition)
 {
-
+	if (condition == false )
+	{
+		for (int column = 0; column < countColumns; column++)
+		{
+			matrix[transformationLine][column] *= faactor;
+		}
+	}
+	else
+	{
+		for (int column = 0; column < countColumns; column++)
+		{
+			matrix[transformationLine][column] /= faactor;
+		}
+	}
 }
-
-
-
-
 
 
 
