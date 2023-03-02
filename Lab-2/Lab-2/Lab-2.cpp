@@ -185,17 +185,17 @@ int main()
 	//	cout << endl;
 	//}
 
-	//////Удление столбца в динамическом массиве
-	//
-	////cout << "\n\n---------------------Удление столбца в динамическом массиве---------------------\n\n";
-	////cout << "Сколько столбцов удалить? "; cin >> iteration;
-	////for (int i = 0; i < iteration; i++)
-	////{
-	////	cout << "Удаляемый столбец : "; cin >> column;
-	////	matrix = DeleteColMatrix(matrix, countLines, countColumns, column);
-	////	OutputScreen(matrix, countLines - i, countColumns);
-	////	cout << endl;
-	////}
+	//Удление столбца в динамическом массиве
+	
+	//cout << "\n\n---------------------Удление столбца в динамическом массиве---------------------\n\n";
+	//cout << "Сколько столбцов удалить? "; cin >> iteration;
+	//for (int i = 0; i < iteration; i++)
+	//{
+	//	cout << "Удаляемый столбец : "; cin >> column;
+	//	matrix = DeleteColMatrix(matrix, countLines, countColumns, column);
+	//	OutputScreen(matrix, countLines - i, countColumns);
+	//	cout << endl;
+	//}
 	//
 	////Сортировка
 
@@ -215,6 +215,11 @@ int main()
 	//
 
 
+int vector2[5] = { 1,2,3,4,5 };
+
+matrix = multMtrix2Vector(matrix, vector2, countLines, countColumns, countLines);
+OutputScreen(matrix, countLines, countColumns);
+
 	//Преобразование матрицы 
 	cout << "\n\n---------------------Преобразование матрицы---------------------\n\n";
 	cout << "Номер строки: "; cin >> line;
@@ -222,7 +227,7 @@ int main()
 	matrixTransformation(matrix, countColumns, line, factor, 0);
 	OutputScreen(matrix, countLines, countColumns);
 	
-	cout << "Номер столбца: "; cin >> line;
+	cout << "Номер строки: "; cin >> line;
 	cout << "Поделить на: "; cin >> factor;
 	matrixTransformation(matrix, countColumns, line, factor, 1);
 	OutputScreen(matrix, countLines, countColumns);

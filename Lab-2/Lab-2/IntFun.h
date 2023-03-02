@@ -51,6 +51,6 @@ void PasteSortMatrix(int** matrix, int countLines, int countColumns, int& sortLi
 
 void matrixTransformation(int** matrix, int countColumns, int transformationLine, int faactor, bool condition = 0);
 
-
+int** multMtrix2Vector(int** matrix, int* vector, int countLines, int& countColumns, int vectorLength);
 
 void Transportation(int** matrix, int countLines, int countColumns);

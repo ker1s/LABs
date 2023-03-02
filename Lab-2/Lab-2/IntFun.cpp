@@ -472,6 +472,7 @@ int** DeleteColMatrix(int** matrix, int countLines, int& countColumns, int death
 	}
 	for (int i = 0; i < countLines; i++)
 	{
+		newColumn = 0;
 	for (int j = 0; j < countColumns; j++)
 		{
 			if (j != deathColumn)
@@ -560,34 +561,35 @@ void PasteSortMatrix(int** matrix, int countLines, int countColumns, int& sortLi
 
 
 
-int** multMtrix2Vector(int** matrix, int* vector, int countLines, int countColumns, int vectorLength)
+int** multMtrix2Vector(int** matrix, int* vector, int countLines, int& countColumns, int vectorLength)
 {
 	int** multVector{ new int* [countLines] };
 	for (int i = 0; i < countLines; i++)
 	{
 		multVector[i] = new int[1];
 	}
-	int** convertedVector{ new int* [countLines] };
-	for (int i = 0; i < countLines; i++)
-	{
-		convertedVector[i] = new int[1];
-		convertedVector[i][0] = vector[i];
-	}
-	
+	//int** convertedVector{ new int* [countLines] };
+	//for (int i = 0; i < countLines; i++)
+	//{
+	//	convertedVector[i] = new int[1];
+	//	convertedVector[i][0] = vector[i];
+	//}
+	//
 	for (int i = 0; i < vectorLength; i++)
 	{
-		multVector[i] = 0;
+		multVector[i][0] = 0;
 	}
 
-	convertedVector = Vector2Matrix(vector, countLines, 1, vectorLength);
+	//convertedVector = Vector2Matrix(vector, countLines, 1, vectorLength);
 	for (int line = 0; line < countLines; line++)
 	{
 		for (int column = 0; column < countColumns; column++)
 		{
-			int** multVector{ new int* [countLines] };
-			multVector[line][0] += matrix[line][column] * convertedVector[line][0];
+			//int** multVector{ new int* [countLines] };
+			multVector[line][0] += matrix[line][column] * vector[line];
 		}
 	}
+	countColumns = 1;
 	return multVector;
 }
 
