@@ -10,6 +10,7 @@
 using namespace std;
 
 int** InputRand(int** matrix, int countLines, int countColumns);
+int* InputRandVector(int* vector, int vectorLength);
 
 void OutputScreen(int** matrix, int countLines, int countColumns);
 void OutVectorScreen(int* vector, int vectorSize);
@@ -51,6 +52,7 @@ void PasteSortMatrix(int** matrix, int countLines, int countColumns, int& sortLi
 
 void matrixTransformation(int** matrix, int countColumns, int transformationLine, int faactor, bool condition = 0);
 
-int** multMtrix2Vector(int** matrix, int* vector, int countLines, int& countColumns, int vectorLength);
+int** multMtrix2Vector(int** matrix, int* vector, int countLines, int& countColumns);
+int** multMatrix2Matrix(int** matrix1, int** matrix2, int& countLines1, int& countColumns1, int countColumns1AndLines2, int countColumns2);
 
 void Transportation(int** matrix, int countLines, int countColumns);

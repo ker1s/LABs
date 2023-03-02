@@ -24,6 +24,18 @@ int** InputRand(int** matrix, int countLines, int countColumns)
 	}
 	return matrix;
 }
+int* InputRandVector(int* vector, int vectorLength)
+{
+	random_device seed;
+	mt19937 generator(seed());
+	uniform_int_distribution<int> distribution(-100, 100);
+
+	for (int i = 0; i < vectorLength; i++)
+	{
+		vector[i] = distribution(generator);
+	}
+	return vector;
+}
 
 
 void OutputScreen(int** matrix, int countLines, int countColumns)
@@ -561,42 +573,48 @@ void PasteSortMatrix(int** matrix, int countLines, int countColumns, int& sortLi
 
 
 
-int** multMtrix2Vector(int** matrix, int* vector, int countLines, int& countColumns, int vectorLength)
+int** multMtrix2Vector(int** matrix, int* vector, int countLines, int& countColumns)
 {
 	int** multVector{ new int* [countLines] };
 	for (int i = 0; i < countLines; i++)
 	{
 		multVector[i] = new int[1];
 	}
-	//int** convertedVector{ new int* [countLines] };
-	//for (int i = 0; i < countLines; i++)
-	//{
-	//	convertedVector[i] = new int[1];
-	//	convertedVector[i][0] = vector[i];
-	//}
-	//
-	for (int i = 0; i < vectorLength; i++)
+
+	for (int i = 0; i < countLines; i++)
 	{
 		multVector[i][0] = 0;
 	}
 
-	//convertedVector = Vector2Matrix(vector, countLines, 1, vectorLength);
 	for (int line = 0; line < countLines; line++)
 	{
 		for (int column = 0; column < countColumns; column++)
 		{
-			//int** multVector{ new int* [countLines] };
-			multVector[line][0] += matrix[line][column] * vector[line];
+			multVector[line][0] += matrix[line][column] * vector[column];
 		}
 	}
 	countColumns = 1;
 	return multVector;
 }
 
-//int** multMatrix2Matrix(int** matrix1, int** matrix2, int countLines, int countColumns)
-//{
-//
-//}
+int** multMatrix2Matrix(int** matrix1, int** matrix2, int& countLines1, int& countColumns1,int countColumns1AndLines2, int countColumns2)
+{
+	int** multMatrix{ new int* [countLines1] };
+	for (int i = 0; i < countLines1; i++)
+	{
+		multMatrix[i] = new int[countColumns2];
+		for (int j = 0; j < countColumns2; j++)
+		{
+			multMatrix[i][j] = 0;
+			for (int k = 0; k < countColumns1AndLines2; k++)
+			{
+				multMatrix[i][j] += matrix1[i][k] * matrix2[k][j];
+			}
+		}
+	}
+	countColumns1 = countColumns2;
+	return multMatrix;
+}
 
 
 
