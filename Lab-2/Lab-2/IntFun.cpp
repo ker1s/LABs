@@ -9,6 +9,20 @@
 
 using namespace std;
 
+int** InputKeyboard(int** matrix, int countLines, int countColumns)
+{
+	for (int line = 0; line < countLines; line++)
+	{
+		for (int column = 0; column < countColumns; column++)
+		{
+			cout << "[" << line << "] " << "[" << column << "] ";
+			cin >> matrix[line][column];
+			cout << endl;
+		}
+	}
+	return matrix;
+
+}
 int** InputRand(int** matrix, int countLines, int countColumns)
 {
 	random_device seed;
@@ -570,9 +584,6 @@ void PasteSortMatrix(int** matrix, int countLines, int countColumns, int& sortLi
 	sortColumn = INT_MIN;
 }
 
-
-
-
 int** multMtrix2Vector(int** matrix, int* vector, int countLines, int& countColumns)
 {
 	int** multVector{ new int* [countLines] };
@@ -616,8 +627,6 @@ int** multMatrix2Matrix(int** matrix1, int** matrix2, int& countLines1, int& cou
 	return multMatrix;
 }
 
-
-
 void matrixTransformation(int** matrix, int countColumns, int transformationLine, int faactor, bool condition)
 {
 	if (condition == false )
@@ -635,10 +644,6 @@ void matrixTransformation(int** matrix, int countColumns, int transformationLine
 		}
 	}
 }
-
-
-
-
 
 void Transportation(int** matrix, int countLines, int countColumns)
 {
@@ -669,4 +674,47 @@ void Transportation(int** matrix, int countLines, int countColumns)
 	}
 	delete[] tempMatrix;
 
+}
+
+int Bonus1(int** matrix, int countLines, int countColumns)
+{
+	int tempCount;
+	int count{ 0 };
+
+	for (int i = 0; i < countColumns ; i++)
+	{
+		for (int j = 0; j < countLines; j++)
+		{
+			if (matrix[j][i] == 0)
+			{
+				count++;
+				break;
+			}
+		}
+	}
+	return count;
+}
+
+int Bonus2(int** matrix, int countLines, int countColumns)
+{
+	int biggerStrik{ 0 };
+	int currentStrik{ 1 };
+	int maxStrikLine{ -1 };
+	for (int i = 0; i < countLines; i++)
+	{
+		for (int j = 1; j < countColumns; j++)
+		{
+			if (matrix[i][j - 1] == matrix[i][j])
+			{
+				currentStrik++;
+			}
+			if (currentStrik > biggerStrik)
+			{
+				biggerStrik = currentStrik;
+				maxStrikLine = i;
+			}
+			currentStrik = 1;
+		}
+	}
+	return maxStrikLine;
 }

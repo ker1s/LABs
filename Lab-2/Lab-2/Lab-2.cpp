@@ -264,6 +264,15 @@ int main()
 	cout << endl;
 	system("pause");
 
-	return 0;
+	//Бонус
+	InputKeyboard(matrix, countLines, countColumns);
+	cout << endl << endl;
+	OutputScreen(matrix, countLines, countColumns);
+	cout << "Количество столбцов, содержащих хотя бы один нулевой элемент: " << Bonus1(matrix, countLines, countColumns) << endl;
+	cout << "номер строки, в которой находится самая длинная серия одинаковых элементов: " << Bonus2(matrix, countLines, countColumns) << endl;
+	system("pause");
 
+
+
+	return 0;
 }

@@ -9,6 +9,7 @@
 
 using namespace std;
 
+int** InputKeyboard(int** matrix, int countLines, int countColumns);
 int** InputRand(int** matrix, int countLines, int countColumns);
 int* InputRandVector(int* vector, int vectorLength);
 
@@ -56,3 +57,6 @@ int** multMtrix2Vector(int** matrix, int* vector, int countLines, int& countColu
 int** multMatrix2Matrix(int** matrix1, int** matrix2, int& countLines1, int& countColumns1, int countColumns1AndLines2, int countColumns2);
 
 void Transportation(int** matrix, int countLines, int countColumns);
+
+int Bonus1(int** matrix, int countLines, int countColumns);
+int Bonus2(int** matrix, int countLines, int countColumns);
